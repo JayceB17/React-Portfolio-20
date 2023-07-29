@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PortfolioForm from './PortfolioForm';
-import Portfolio from './Portfolio';
+import Portfolio from './PortfolioList';
 
-function PortfolioList() {
-  const [Portfolio, setPortfolio] = useState([]);
+function Portfolio() {
+  const [Portfolio, setportfolio] = useState([]);
 
   // Function to add a bucket list item
   const addPortfolioItem = (item) => {
@@ -15,25 +15,25 @@ function PortfolioList() {
   const newItem = [item, ...portfolio];
   console.log(newItem);
 
-  setPortfolio(newItem);
+  setportfolio(newItem);
 };
 
   // Function to mark bucket list item as complete
   const completePortfolioItem = (id) => {
-    let updatedPorfolio = Portfolio.map((item) => {
+    let updatedPorfolio = portfolio.map((item) => {
       if (item.id === id) {
         item.isComplete = !item.isComplete;
       }
       return item;
     });
     console.log(updatedPorfolio);
-    setPortfolio(updatedPorfolio);
+    setportfolio(updatedPorfolio);
   };
 
   // Function to remove bucket list item and update state
   const removePortfolioItem = (id) => {
-    const updatedPorfolio = [...Portfolio].filter((item) => item.id !==id);
-    setPortfolio(updatedPorfolio);
+    const updatedPorfolio = [...portfolio].filter((item) => item.id !==id);
+    setportfolio(updatedPorfolio);
   };
 
   // Function to edit the bucket list item
@@ -45,7 +45,7 @@ function PortfolioList() {
 
     // We use the "prev" argument provided with the useState hook to map through our list of items
     // We then check to see if the item ID matches the id of the item that was clicked and if so, we set it to a new value
-    setPortfolio((prev) =>
+    setportfolio((prev) =>
       prev.map((item) => (item.id === itemId ? newValue : item))
     );
   };
@@ -59,9 +59,9 @@ function PortfolioList() {
         completePortfolioItem={completePortfolioItem}
         removePorfolioItem={removePortfolioItem}
         editPortfolioItem={editPortfolioItem}
-      ></portfolio>
+      />
     </div>
   );
 }
 
-export default PortfolioList;
+export default Portfolio;
